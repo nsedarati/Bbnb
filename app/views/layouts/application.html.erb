@@ -8,6 +8,7 @@
   </head>
   <body>
     <%= render 'shared/navbar'%>
+    <%= render 'shared/message'%>
     <div id="flash">
       <% flash.each do |key, value| -%>
         <div id="flash_<%= key %>"><%=h value %></div>

@@ -29,3 +29,11 @@ Please feel free to use a different markup language if you do not plan to run
 <div class="submit-field">
       <%= form.submit %>
     </div>
+
+
+
+    <div id="flash">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>"><%=h value %></div>
+      <% end %>
+    </div>
