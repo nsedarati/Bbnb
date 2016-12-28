@@ -9,13 +9,9 @@
   <body>
     <%= render 'shared/navbar'%>
     <%= render 'shared/message'%>
-    <div id="flash">
-      <% flash.each do |key, value| -%>
-        <div id="flash_<%= key %>"><%=h value %></div>
-      <% end %>
-    </div>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
 </html>

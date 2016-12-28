@@ -1,0 +1,9 @@
+<h1>Listings#index</h1>
+<p>Find me in app/views/listings/index.html.erb</p>
+<% @listings.each do |listing| %>
+  <div class="col-md-6" class="container">
+    <p><%= listing.home_type %></p>
+    <p><%= listing.room_type %></p>
+  </div>
+<% end %>
+<%= will_paginate @listings %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161227130037) do
+ActiveRecord::Schema.define(version: 20161227150915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,27 @@ ActiveRecord::Schema.define(version: 20161227130037) do
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
+  create_table "listings", force: :cascade do |t|
+    t.string   "home_type"
+    t.string   "room_type"
+    t.integer  "accommodate"
+    t.integer  "bed_room"
+    t.integer  "bath_room"
+    t.string   "listing_name"
+    t.text     "summary"
+    t.string   "address"
+    t.boolean  "is_internet"
+    t.boolean  "is_smoker"
+    t.boolean  "is_pet"
+    t.integer  "price"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
@@ -41,4 +62,5 @@ ActiveRecord::Schema.define(version: 20161227130037) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "authentications", "users"
+  add_foreign_key "listings", "users"
 end
