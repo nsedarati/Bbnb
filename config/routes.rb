@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # get 'listings/index'
+
+  # get 'listings/show'
+
+  # get 'listings/new'
+
+  # get 'listings/update'
+
   root "pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,7 +15,7 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords", only: [:create, :edit, :update, :show]
   end
-
+  resources :listings
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

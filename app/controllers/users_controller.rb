@@ -1,9 +1,11 @@
 class UsersController < Clearance::UsersController
 
-  def create
+  def new
+    @user = User.new
+  end
 
+  def create
     @user = user_from_params
-    byebug
     if @user.save
       sign_in @user
       redirect_back_or url_after_create
@@ -13,6 +15,16 @@ class UsersController < Clearance::UsersController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def show
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+
   end
 
   private
