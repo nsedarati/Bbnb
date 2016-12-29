@@ -1,6 +1,6 @@
 class Listing < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
   belongs_to :user
-
   validates :home_type, presence: true
   validates :room_type, presence: true
   validates :accommodate, presence: true
@@ -9,5 +9,6 @@ class Listing < ActiveRecord::Base
   validates :listing_name, presence: true, length: {maximum: 50}
   validates :summary, presence: true, length: {maximum: 728}
   validates :address, presence: true
+
 
 end

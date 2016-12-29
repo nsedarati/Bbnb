@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
   end
 
   def show
-
+    @listing = Listing.find_by_id(params[:id])
   end
 
   def new
@@ -31,12 +31,18 @@ class ListingsController < ApplicationController
     end
   end
 
+  def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    redirect_to '/listings/new', :notice => "Your image has been deleted"
+  end
+
   private
   def set_listing
     @listing  = Listing.find(params[:id])
   end
   def listing_params
-    params.require(:listing).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_internet, :is_smoker, :is_pet, :price, :active)
+    params.require(:listing).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_internet, :is_smoker, :is_pet, :price, :active,:avatar)
 
   end
 end

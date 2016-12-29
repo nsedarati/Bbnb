@@ -1,7 +1,10 @@
 class UsersController < Clearance::UsersController
 
-  def create
+  def new
+    @user = User.new
+  end
 
+  def create
     @user = user_from_params
     if @user.save
       sign_in @user
@@ -12,6 +15,16 @@ class UsersController < Clearance::UsersController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def show
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+
   end
 
   private

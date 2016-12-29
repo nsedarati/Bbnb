@@ -37,3 +37,32 @@ Please feel free to use a different markup language if you do not plan to run
         <div id="flash_<%= key %>"><%=h value %></div>
       <% end %>
     </div>
+
+enum :role [:customer, :superadmin, :moderator]
+     # authorization code
+    if user.customer?
+      flash[:notice] = "Sorry. You are not allowed to perform this action."
+      return redirect_to some_other_url, notice: "Sorry. You do not have the permission to verify a property."
+    end
+    # end authorization code
+
+
+
+    #########for _form.html.erb
+    <%= form_for @listing, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :gallery_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.file_field :image %>
+      </div>
+    </div>
+  </p>
+  <p><%= f.submit class: "btn btn-primary" %></p>
+<% end %>
+  
